@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal-Wireless Dataset</title>
+    <style>
+        /* --- 全局样式 --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- 容器样式 --- */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- 标题和文本 --- */
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* --- 链接和按钮 --- */
+        .links {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-link:hover, .button-link:focus {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* --- 图片样式 --- */
+        .teaser-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: block;
+        }
+
+        /* --- 引用代码块 --- */
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto; /* 移动端代码不换行时可以滚动 */
+            white-space: pre-wrap; /* 自动换行 */
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: "Courier New", Courier, monospace;
+        }
+        
+        /* --- 页脚 --- */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9em;
+            color: #777;
+        }
+        /* --- 顶部导航栏 --- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: #ffffffea;
+            backdrop-filter: saturate(150%) blur(6px);
+            border-bottom: 1px solid #e8eef6;
+        }
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.6rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+        .brand {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 0.02em;
+            color: #254f86;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-links a {
+            color: #365676;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a:focus {
+            background-color: #edf3fa;
+            color: #254f86;
+        }
+        .nav-links a.active {
+            background-color: #e6f0ff;
+            color: #1b4fb8;
+        }
+        @media (max-width: 720px) {
+            .topbar-inner { padding: 0.55rem 0.9rem; }
+            .nav-links { gap: 10px; }
+        }
+        /* --- Hero 顶部视频背景 --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 360px;
+            max-height: 720px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(65%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw + 1rem, 3rem);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin: 0 0 1rem 0;
+            text-shadow: 0 6px 24px rgba(0,0,0,0.35);
+            color: #f0f4ff;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.95rem, 1vw + 0.6rem, 1.2rem);
+            opacity: 0.9;
+            margin: 0 0 1.25rem 0;
+        }
+
+        .hero-controls {
+            display: inline-flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.25s ease, transform 0.2s ease;
+        }
+
+        .upload-btn:hover, .upload-btn:focus {
+            background-color: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        /* --- 数据集说明区块 --- */
+        .dataset-desc {
+            margin: 0 auto 2.5rem auto;
+            max-width: 1200px; /* 更宽 */
+            width: 95%;
+            background: linear-gradient(120deg, #f6faff 88%, #e7f0f6 100%);
+            padding: 1.1rem 2.5rem 2.5rem 2.5rem; /* padding-top 缩小 */
+            border-radius: 13px;
+            box-shadow: 0 4px 24px 1px rgba(30,44,100,0.09);
+            position: relative;
+            z-index: 1;
+            margin-top: 2.2rem; /* 顶部留白缩小，视觉更均衡 */
+        }
+        .dataset-desc-flex {
+            display: flex;
+            align-items: center; /* 垂直居中内容（按钮/文本） */
+            justify-content: space-between;
+            gap: 48px;
+        }
+        .dataset-desc-btn-col {
+            flex: 0 0 260px;
+            margin-left: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: stretch;
+        }
+        .dataset-desc-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            color: #315782;
+            letter-spacing: 0.1em;
+            border-bottom: none;
+            text-align: left;
+        }
+        .dataset-desc-summary {
+            font-size: 1.15rem;
+            color: #405060;
+            margin-bottom: 1.1rem;
+            margin-top: 0.15rem;
+            font-weight: 500;
+        }
+        .dataset-desc-list {
+            list-style: none;
+            padding: 0 0 0 0.1rem;
+            margin: 0;
+        }
+        .dataset-desc-list li {
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.08rem;
+            color: #2b3a4e;
+            margin-bottom: 0.75rem;
+            line-height: 1.65;
+            font-weight: 500;
+        }
+        .bullet-cube {
+            font-size: 1.52em;
+            margin-right: 0.82em;
+            color: #297bfa;
+            flex-shrink: 0;
+            line-height: 1.15;
+        }
+        .multimodal-section {
+            max-width: 1200px;
+            margin: 2.5rem auto 3rem auto;
+            background: #f9fbff;
+            padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+            border-radius: 14px;
+            box-shadow: 0 3px 18px 0px rgba(70, 110, 170, 0.13);
+        }
+        .multimodal-title {
+            text-align: center;
+            margin-bottom: 2.1rem;
+            font-size: 1.5rem;
+            color: #2d407a;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+        .multimodal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px 36px;
+            justify-items: center;
+            align-items: start;
+            padding: 0 0.5rem;
+        }
+        .modality-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: #fff;
+            border-radius: 11px;
+            box-shadow: 0 2px 10px 0px rgba(20,37,70,0.11);
+            padding: 1.2rem 1.1rem 0.7rem 1.1rem;
+            width: 320px;
+            height: 270px;
+            min-width: 320px;
+            min-height: 270px;
+            box-sizing: border-box;
+        }
+        .modality-img {
+            display: block;
+            width: 290px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 1px 8px 0px rgba(34,53,80,0.10);
+            margin-bottom: 0.82rem;
+        }
+        .modality-label {
+            font-size: 1.07rem;
+            color: #36689f;
+            font-weight: 700;
+            margin-top: 0.15rem;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="index.html">Multimodal-Wireless</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html" class="active" aria-current="page">Overview</a>
+                <a href="scenarios.html">Scenarios</a>
+                <a href="data-collection.html">Data Collection</a>
+                <a href="tutorials.html">Tutorials</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <video id="heroVideo" autoplay muted loop playsinline></video>
+        <div class="hero-overlay">
+            <h1 class="hero-title">Multimodal-Wireless</h1>
+            <p class="hero-subtitle">An Open Multimodal Sensing Dataset for Wireless Communication and Cooperative Perception</p>
+        </div>
+    </section>
+    <section class="dataset-desc">
+        <div class="dataset-desc-flex">
+            <div style="flex:1; min-width:0;">
+                <h2 class="dataset-desc-title">What is Multimodal-Wireless?</h2>
+                <p class="dataset-desc-summary">
+                    An open-source multimodal sensing dataset designed for communication and cooperative perception research.<br>
+                    Generated through an integrated and customizable data pipeline built upon the CARLA simulator and Sionna framework, the dataset features:
+                </p>
+                <ul class="dataset-desc-list">
+                    <li><span class="bullet-cube">&#10022;</span> 161,400 frames collected across 4 virtual towns, 16 communication scenarios, and 3 weather conditions, encompassing multiple sensing modalities—communication channel, LiDAR, RGB and depth cameras, IMU, and radar.</li>
+                    <li><span class="bullet-cube">&#10022;</span> 100&nbsp;Hz sampled channel for diverse applications, along with 100&nbsp;Hz oversampled, temporal aligned sensor data which can be easily downsampled for practical usage.</li>
+                    <li><span class="bullet-cube">&#10022;</span> All-weather resilience by design.</li>
+                    <li><span class="bullet-cube">&#10022;</span> Full flexibility and extensibility by simply modifying a configuration file.</li>
+                    <li><span class="bullet-cube">&#10022;</span> A unified resource for vehicle-to-everything (V2X) communication and perception.</li>
+                </ul>
+            </div>
+            <div class="dataset-desc-btn-col">
+                <a href="#" class="button-link">📄 Paper</a>
+                <a href="https://github.com/2409Kevin/Multimodal-Wireless" class="button-link">💻 Code/Assets</a>
+                <a href="#" class="button-link">💾 Download Dataset</a>
+                <a href="#" class="button-link">📚 To Reproduce/Extend</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 多模态数据模块 -->
+    <section class="multimodal-section">
+        <h2 class="multimodal-title">Multimodal Data Involved</h2>
+        <div class="multimodal-grid">
+            <div class="modality-item">
+                <img src="html_assets/channel.png" alt="Channel" class="modality-img">
+                <div class="modality-label">Channel</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/camera.png" alt="RGB" class="modality-img">
+                <div class="modality-label">RGB</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/lidar.png" alt="LiDAR" class="modality-img">
+                <div class="modality-label">LiDAR</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/radar.png" alt="Radar" class="modality-img">
+                <div class="modality-label">Radar</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/depthcamera.png" alt="Depth Map" class="modality-img">
+                <div class="modality-label">Depth Map</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/boundingbox.png" alt="Bounding Box" class="modality-img">
+                <div class="modality-label">Bounding Box</div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <div class="container">
+        
+
+        <main>
+            <h2>How to cite</h2>
+            <p>If the Multimodal-Wireless Dataset is helpful for your research, please kindly cite：</p>
+            <pre><code>@article{mao2025mmw,
+title = {Multimodal-Wireless: A Large-Scale Dataset for Sensing and Communication},
+author={Tianhao Mao and Le Liang and Jie Yang and Hao Ye and Shi Jin and Geoffrey Ye Li},
+journal={arXiv preprint arXiv:2303.16199},
+year={2025}
+}</code></pre>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 LLGroup. All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script>
+        (function() {
+            const video = document.getElementById('heroVideo');
+            // 默认背景视频（请将 202510301340.mp4 放到与本文件相同目录）
+            const defaultSrc = '202510301340.mp4';
+            video.src = defaultSrc;
+            video.play().catch(() => {});
+        })();
+    </script>
+    
+</body>
+</html>
