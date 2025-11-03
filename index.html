@@ -49,20 +49,111 @@
 
         .button-link {
             display: inline-block;
-            padding: 12px 24px;
-            margin: 5px;
+            padding: 14px 20px;
+            margin: 0;
             background-color: #007bff;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: bold;
             transition: background-color 0.3s, transform 0.2s;
+            font-size: 1rem;
+            text-align: center;
         }
 
         .button-link:hover, .button-link:focus {
             background-color: #0056b3;
             transform: translateY(-2px);
         }
+
+        /* --- 左右双色拼接按钮 --- */
+        .split-button {
+            display: inline-flex;
+            align-items: stretch;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+        .split-button a {
+            display: inline-block;
+            padding: 12px 16px;
+            text-decoration: none;
+            font-weight: 700;
+            color: #fff;
+            transition: filter 0.25s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+        .split-button a:focus, .split-button a:hover {
+            filter: brightness(0.92);
+            transform: translateY(-1px);
+        }
+        .split-left {
+            background-color: #007bff; /* 蓝色 - 英文 */
+        }
+        .split-right {
+            background-color: #28a745; /* 绿色 - 中文 */
+        }
+
+        /* --- 下拉按钮样式（主按钮 + 选项） --- */
+        .dropdown {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+        .dropdown .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 20px;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: background-color 0.25s ease, transform 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+            justify-content: center; /* 文本居中 */
+            position: relative; /* 供箭头绝对定位 */
+            font-size: 1rem;
+        }
+        .dropdown .btn.primary { background-color: #007bff; }
+        .dropdown .btn.primary:hover, .dropdown .btn.primary:focus { background-color: #005ec7; transform: translateY(-1px); }
+        .dropdown .btn.secondary { background-color: #6c63ff; }
+        .dropdown .btn.secondary:hover, .dropdown .btn.secondary:focus { background-color: #584ef0; transform: translateY(-1px); }
+        .dropdown .caret {
+            font-size: 0.9em;
+            opacity: 0.9;
+            position: absolute;
+            right: 12px; /* 箭头固定在最右侧 */
+        }
+        .dropdown .menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            min-width: 100%;
+            background: #fff;
+            border: 1px solid #e6eef7;
+            border-radius: 8px;
+            box-shadow: 0 10px 26px rgba(24,48,96,0.14);
+            padding: 6px;
+            display: none;
+            z-index: 50;
+        }
+        .dropdown:hover .menu, .dropdown:focus-within .menu { display: block; }
+        .dropdown .menu a {
+            display: block;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: #2b3a4e;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.15s ease, color 0.15s ease;
+            white-space: nowrap;
+        }
+        .dropdown .menu a small { color: #6b7c93; font-weight: 500; }
+        .dropdown .menu a:hover, .dropdown .menu a:focus { background: #edf3fa; color: #254f86; }
 
         /* --- 图片样式 --- */
         .teaser-img {
@@ -246,11 +337,13 @@
         .dataset-desc-btn-col {
             flex: 0 0 260px;
             margin-left: 24px;
+            margin-right: 24px; /* 整体左移，避免贴右侧边缘 */
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 30px; /* 加大四个按钮的纵向间距 */
             align-items: stretch;
         }
+        .dataset-desc-btn-col .button-link { display: block; width: 100%; }
         .dataset-desc-title {
             font-size: 1.7rem;
             font-weight: 800;
@@ -385,8 +478,22 @@
             <div class="dataset-desc-btn-col">
                 <a href="#" class="button-link">📄 Paper</a>
                 <a href="https://github.com/2409Kevin/Multimodal-Wireless" class="button-link">💻 Code/Assets</a>
-                <a href="https://1drv.ms/f/c/e891739d21c98746/EpnYIxEFXAdAmoj7GePie8QB5be53v1TTER4OmjjQbNYNQ?e=ykbmZh" class="button-link">💾 Download Dataset</a>
-                <a href="#" class="button-link">📚 To Reproduce/Extend</a>
+
+                <div class="dropdown">
+                    <a class="btn primary" href="javascript:void(0)">💾 Download Dataset <span class="caret">▾</span></a>
+                    <div class="menu" role="menu">
+                        <a href="https://1drv.ms/f/c/e891739d21c98746/EpnYIxEFXAdAmoj7GePie8QB5be53v1TTER4OmjjQbNYNQ?e=ykbmZh" role="menuitem">Global (OneDrive) </a>
+                        <a href="#" role="menuitem">中国大陆镜像</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a class="btn secondary" href="javascript:void(0)">📚 Reproduce / Extend <span class="caret">▾</span></a>
+                    <div class="menu" role="menu">
+                        <a href="#" role="menuitem">Tutorial Video</a>
+                        <a href="#" role="menuitem">中国大陆镜像</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
