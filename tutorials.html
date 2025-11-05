@@ -15,7 +15,16 @@
         .nav-links a.active { background-color: #e6f0ff; color: #1b4fb8; }
         .container { max-width: 1100px; margin: 2rem auto; padding: 1.5rem; background:#fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
         h1 { margin: 0 0 0.5rem 0; font-size: 1.6rem; color:#2c3e50; }
-        p { color:#54647a; }
+        p { color:#54647a; line-height: 1.6; }
+        ul { margin: 1rem 0; padding-left: 1.5rem; }
+        li { margin: 0.75rem 0; color:#54647a; line-height: 1.6; }
+        a { color: #254f86; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { display: block; margin: 1.5rem auto; border-radius: 4px; max-width: 100%; height: auto; }
+        .video-container { margin: 2rem 0; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-label { margin-bottom: 0.5rem; font-weight: 600; color: #2c3e50; }
     </style>
     </head>
 <body>
@@ -32,7 +41,32 @@
     </header>
     <div class="container">
         <h1>Tutorials</h1>
-        <p>内容筹备中（Coming soon）。</p>
+        <p>The multimodality is composed of five sensory data (LiDAR, RGB and depth camera, IMU and radar) collected in CARLA and channel multi-path information collected in Sionna. The general workflow is illustrated in the following figure:</p>
+        <img src="html_assets/pipeline_new.png" alt="Pipeline workflow">
+        <p>Set up your environment and software following instructions in <a href="https://github.com/le-liang/Multimodal-Wireless/" target="_blank">https://github.com/le-liang/Multimodal-Wireless/</a>, you can begin the extension or replay process by following the detailed steps in our tutorial video.</p>
+        
+        <p>Generally, the generation of dataset includes three steps:</p>
+        <ul>
+            <li><strong>CARLA</strong>: Define the scenario in CARLA via the config file and implement it via carla_main.py, which produces five sensor data and the yaml file of all frames simultaneously.</li>
+            <li><strong>Blender</strong>: Reconstruct the whole scenario frame by frame in Blender based on the .yaml file of each frame.</li>
+            <li><strong>Sionna</strong>: Load the scene of each frame and compute multi-path components and generate the corresponding channel.</li>
+        </ul>
+        
+        <p>➡️ <strong>Watch the Tutorial:</strong></p>
+        
+        <div class="video-container">
+            <div class="video-label">YouTube</div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/M0qTrLj61aM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="video-container">
+            <div class="video-label">Bilibili</div>
+            <div class="video-wrapper">
+                <iframe src="https://player.bilibili.com/player.html?bvid=BV1r11nBGEaV&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
 </body>
 </html>
