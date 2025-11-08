@@ -16,6 +16,68 @@
         .container { max-width: 1100px; margin: 2rem auto; padding: 1.5rem; background:#fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
         h1 { margin: 0 0 0.5rem 0; font-size: 1.6rem; color:#2c3e50; }
         p { color:#54647a; }
+
+        /* === 以下从index.html拷贝，多模态和网格相关 === */
+        .multimodal-section {
+            max-width: 1500px;
+            margin: 2.5rem auto 3rem auto;
+            background: #f9fbff;
+            padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+            border-radius: 14px;
+            box-shadow: 0 3px 18px 0px rgba(70, 110, 170, 0.13);
+        }
+        .multimodal-title {
+            text-align: center;
+            margin-bottom: 2.1rem;
+            font-size: 1.5rem;
+            color: #2d407a;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+        .multimodal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px 36px;
+            justify-items: center;
+            align-items: start;
+            padding: 0 0.5rem;
+        }
+        /* 针对2列布局单独减少间距 */
+        .multimodal-grid[style*='repeat(2, 1fr)'] {
+            gap: 20px 24px !important;
+        }
+        .modality-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: #fff;
+            border-radius: 11px;
+            box-shadow: 0 2px 10px 0px rgba(20,37,70,0.11);
+            padding: 1.2rem 1.1rem 0.7rem 1.1rem;
+            width: 320px;
+            height: 270px;
+            min-width: 320px;
+            min-height: 270px;
+            box-sizing: border-box;
+        }
+        .modality-img {
+            display: block;
+            width: 290px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 1px 8px 0px rgba(34,53,80,0.10);
+            margin-bottom: 0.82rem;
+        }
+        .modality-label {
+            font-size: 1.07rem;
+            color: #36689f;
+            font-weight: 700;
+            margin-top: 0.15rem;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
     </style>
     </head>
 <body>
@@ -31,8 +93,105 @@
         </div>
     </header>
     <div class="container">
-        <h1>Scenarios</h1>
-        <p>内容筹备中（Coming soon）。</p>
+        <h1>Scenario Display</h1>
+        <p style="font-size:1.08rem; margin-bottom:2.2rem; color:#405060;">
+            In this section, we showcase all 16 scenarios, including 5 from Town03, 5 from Town05, 2 from Town07, and 4 from Town10. In the video, the road-side unit (RSU) is circled with an <b style='color:#ff8c1a;'>orange</b> halo, and all connected and autonomous vehicles (CAVs) are circled with a <b style='color:#297bfa;'>blue</b> halo.
+        </p>
+        <!-- Town03 -->
+        <section class="multimodal-section">
+            <div class="multimodal-title">Town03 Scenarios</div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:1.7rem;">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town03/roundabout.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Roundabout</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town03/gastation.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Gas station</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town03/Tjunction.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">T-junction with slope</div>
+                </div>
+            </div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town03/crossroad_wiz_slope.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Crossroad with slope</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town03/5wayroad.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">5-way intersection</div>
+                </div>
+            </div>
+        </section>
+        <!-- Town05 -->
+        <section class="multimodal-section">
+            <div class="multimodal-title">Town05 Scenarios</div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:1.7rem;">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town05/dualskybridge.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Dual skybridges</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town05/ringroad.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Ring road</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town05/beneath.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">T-junction under overpass</div>
+                </div>
+            </div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town05/CBD.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">CBD Crossroad</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town05/parkinglot.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Parking lot</div>
+                </div>
+            </div>
+        </section>
+        <!-- Town07 -->
+        <section class="multimodal-section">
+            <div class="multimodal-title">Town07 Scenarios (rural)</div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town07/single-lane.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Single-lane road</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town07/rural.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Rural crossroad</div>
+                </div>
+            </div>
+        </section>
+        <!-- Town10 -->
+        <section class="multimodal-section">
+            <div class="multimodal-title">Town10 Scenarios</div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom:1.7rem;">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town10/crossroad.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Urban crossroad</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town10/curvy.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Curvy road</div>
+                </div>
+            </div>
+            <div class="multimodal-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town10/Hroad.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">H-shaped Road</div>
+                </div>
+                <div class="modality-item">
+                    <video class="modality-img" src="html_assets/Videos/Town10/skybridge.mp4" autoplay loop muted playsinline preload="none"></video>
+                    <div class="modality-label">Wide skybridge</div>
+                </div>
+            </div>
+        </section>
+
     </div>
 </body>
 </html>
