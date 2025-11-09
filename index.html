@@ -318,7 +318,7 @@
         /* --- 数据集说明区块 --- */
         .dataset-desc {
             margin: 0 auto 2.5rem auto;
-            max-width: 1200px; /* 更宽 */
+            max-width: 1500px; /* 更宽以适应4列布局 */
             width: 95%;
             background: linear-gradient(120deg, #f6faff 88%, #e7f0f6 100%);
             padding: 1.1rem 2.5rem 2.5rem 2.5rem; /* padding-top 缩小 */
@@ -382,7 +382,7 @@
             line-height: 1.15;
         }
         .multimodal-section {
-            max-width: 1200px;
+            max-width: 1500px; /* 更宽以适应4列布局 */
             margin: 2.5rem auto 3rem auto;
             background: #f9fbff;
             padding: 2.5rem 2.5rem 2.5rem 2.5rem;
@@ -399,7 +399,7 @@
         }
         .multimodal-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 28px 36px;
             justify-items: center;
             align-items: start;
@@ -507,26 +507,34 @@
                 <div class="modality-label">Channel</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/camera.png" alt="RGB" class="modality-img">
-                <div class="modality-label">RGB</div>
-            </div>
-            <div class="modality-item">
                 <img src="html_assets/LiDAR.png" alt="LiDAR" class="modality-img">
                 <div class="modality-label">LiDAR</div>
-            </div>
-            <div class="modality-item">
-                <img src="html_assets/radar.png" alt="Radar" class="modality-img">
-                <div class="modality-label">Radar</div>
             </div>
             <div class="modality-item">
                 <img src="html_assets/depthcamera.png" alt="Depth Map" class="modality-img">
                 <div class="modality-label">Depth Map</div>
             </div>
             <div class="modality-item">
+                <img src="html_assets/gps.png" alt="GNSS" class="modality-img">
+                <div class="modality-label">GNSS</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/camera.png" alt="RGB" class="modality-img">
+                <div class="modality-label">RGB</div>
+            </div>
+            <div class="modality-item">
+                <img src="html_assets/radar.png" alt="Radar" class="modality-img">
+                <div class="modality-label">Radar</div>
+            </div>
+            <div class="modality-item">
                 <img src="html_assets/boundingbox.png" alt="Bounding Box" class="modality-img">
                 <div class="modality-label">Bounding Box</div>
             </div>
-            
+            <div class="modality-item">
+                <img src="html_assets/imu.png" alt="IMU" class="modality-img">
+                <div class="modality-label">IMU</div>
+            </div>
+
         </div>
     </section>
     
