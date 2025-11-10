@@ -67,8 +67,8 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.08);
         }
-        h1 { color: #254f86; text-align: center; font-size: 1.9rem; margin-bottom: 1.6rem; }
-        p, ul { font-size: 1.08rem; color: #405060; }
+        h1 { color: #2c3e50; text-align: center; font-size: 1.6rem; margin-bottom: 1.3rem; }
+        p, ul, li { font-size: 1.08rem; color: #54647a; }
         ul { padding-left: 1.2em; }
         li {margin-bottom: 0.7em;}
         .note {
@@ -80,26 +80,22 @@
             margin-top: 1.3rem;
         }
         /* 新增小按钮样式 */
-        .btn-small {
+        .btn-link {
             display: inline-block;
-            padding: 7px 22px;
             font-size: 1rem;
-            border-radius: 6px;
-            background-color: #318bfa;
-            color: #fff !important;
-            font-weight: 600;
-            text-decoration: none;
-            margin-right: 13px;
-            margin-bottom: 6px;
-            transition: background 0.18s, transform 0.15s;
+            color: #318bfa !important;
+            text-decoration: underline;
+            background: none;
             border: none;
-            outline: none;
-            box-shadow: 0 2px 5px rgba(24,68,164,0.10);
+            padding: 0;
+            margin-right: 20px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.18s;
         }
-        .btn-small:hover, .btn-small:focus {
-            background: #1764ae;
-            color:#fff;
-            transform: translateY(-1.5px);
+        .btn-link:hover, .btn-link:focus {
+            color: #1764ae !important;
         }
     </style>
 </head>
@@ -125,12 +121,12 @@
         </p>
         <ul style="margin-bottom:1.6rem;">
             <li>
-                <strong>Global mirror (OneDrive):</strong>
-                <a class="btn-small" href="https://1drv.ms/f/c/e891739d21c98746/EpnYIxEFXAdAmoj7GePie8QB5be53v1TTER4OmjjQbNYNQ?e=ykbmZh" target="_blank">Download from OneDrive</a>
+                <strong>Global (OneDrive):</strong>
+                <a class="btn-link" href="https://1drv.ms/f/c/e891739d21c98746/EpnYIxEFXAdAmoj7GePie8QB5be53v1TTER4OmjjQbNYNQ?e=ykbmZh" target="_blank">Download from OneDrive</a>
             </li>
             <li>
                 <strong>China mainland mirror:</strong>
-                <a class="btn-small" href="https://pan.quark.cn/s/de33117418c4" target="_blank">Download from Quark</a>
+                <a class="btn-link" href="https://pan.quark.cn/s/de33117418c4" target="_blank">Download from Quark</a>
             </li>
         </ul>
         <div class="note">
