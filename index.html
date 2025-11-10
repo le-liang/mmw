@@ -331,8 +331,9 @@
         .dataset-desc-flex {
             display: flex;
             align-items: center; /* 垂直居中内容（按钮/文本） */
-            justify-content: space-between;
-            gap: 48px;
+            justify-content: center; /* 修改：居中对齐 */
+            gap: 60px; /* 修改：调整间距 */
+            flex-wrap: wrap; /* 新增：允许换行以增强响应性 */
         }
         .dataset-desc-btn-col {
             flex: 0 0 260px;
@@ -459,12 +460,13 @@
         <video id="heroVideo" autoplay muted loop playsinline></video>
         <div class="hero-overlay">
             <h1 class="hero-title">Multimodal-Wireless</h1>
-            <p class="hero-subtitle">An Open Multimodal Sensing Dataset for Wireless Communication and Collaborative Perception</p>
+            <p class="hero-subtitle">A Large-Scale Open-Source for Multimodal Sensing and Communication Research</p>
         </div>
     </section>
     <section class="dataset-desc">
         <div class="dataset-desc-flex">
-            <div style="flex:1; min-width:0;">
+            <!-- 修改：调整了flex比例，使文本区域不会过宽 -->
+            <div style="flex: 1.5; min-width: 320px;">
                 <h2 class="dataset-desc-title">What is Multimodal-Wireless?</h2>
                 <p class="dataset-desc-summary">
                     An open-source multimodal sensing dataset designed for communication and collaborative perception research.<br>
@@ -478,8 +480,13 @@
                     <li><span class="bullet-cube">&#10022;</span> A unified resource for vehicle-to-everything (V2X) communication and perception.</li>
                 </ul>
             </div>
-            <div class="dataset-desc-btn-col">
-                <!-- 顶部已集成，板块按钮已移除 -->
+            <!-- 修改：删除了导致巨大间隙的空div -->
+            <!-- 修改：将视频容器修改为2*2网格布局 -->
+            <div style="flex: 1; display: flex; flex-wrap: wrap; gap: 19px; justify-content: center; align-items: center; max-width: 550px; min-width: 300px;">
+                <video src="Videos/Town10/Hroad.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
+                <video src="Videos/Town10/skybridge.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
+                <video src="Videos/Town05/beneath.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
+                <video src="Videos/Town03/5wayroad.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
             </div>
         </div>
     </section>
