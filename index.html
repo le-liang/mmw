@@ -438,6 +438,29 @@
             letter-spacing: 0.01em;
             text-align: center;
         }
+        /* Pipeline update: scoped styles preserve the existing page design. */
+        .pipeline-update {
+            scroll-margin-top: 6rem;
+            box-sizing: border-box;
+            max-width: 1500px;
+            width: calc(100% - 3rem);
+            margin: 2.5rem auto;
+            padding: 1.5rem 2rem;
+            border-left: 4px solid #297bfa;
+            border-radius: 13px;
+            background: #f6faff;
+            box-shadow: 0 4px 24px 1px rgba(30,44,100,0.09);
+            color: #405060;
+        }
+        .pipeline-update h2 { color: #315782; border-bottom: none; margin: 0 0 0.5rem; padding: 0; font-size: 1.5rem; }
+        .pipeline-update .update-label { color: #315782; font-weight: 700; margin: 0 0 0.4rem; }
+        .pipeline-update .update-metric { color: #254f86; font-size: 1.2rem; margin: 0.5rem 0; }
+        .pipeline-update .update-note { font-size: 0.95rem; }
+        .pipeline-update a { color: #1b4fb8; text-decoration: underline; text-underline-offset: 3px; }
+        .pipeline-update .update-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 0; }
+        @media (max-width: 720px) {
+            .pipeline-update { width: calc(100% - 2rem); padding: 1.25rem; }
+        }
     </style>
 </head>
 <body>
@@ -491,6 +514,15 @@
         </div>
     </section>
     
+    <section class="pipeline-update" id="pipeline-update" aria-labelledby="pipeline-update-title">
+        <p class="update-label">Pipeline Update Preview</p>
+        <h2 id="pipeline-update-title">🚀 Accelerated Data Generation</h2>
+        <p class="update-metric"><strong>20&times; faster generation &middot; approximately 95% less total time</strong></p>
+        <p>The architecture update reuses the static scene and updates dynamic vehicles frame by frame in the Sionna RT workflow, reducing repeated scene preparation and loading for custom dataset generation.</p>
+        <p class="update-note">Speedup reported by the authors for the same workload; detailed benchmark timings and conditions are pending. Results may vary by scenario and hardware. Release details are forthcoming.</p>
+        <p class="update-links"><a href="tutorials.html#accelerated-pipeline">Explore the architecture</a><a href="https://github.com/le-liang/Multimodal-Wireless" target="_blank" rel="noopener">Project on GitHub</a></p>
+    </section>
+
     <!-- 多模态数据模块 -->
     <section class="multimodal-section">
         <h2 class="multimodal-title">Multimodal Data Involved</h2>
