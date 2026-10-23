@@ -45,18 +45,46 @@
     </header>
     <div class="container">
         <h1>Tutorials</h1>
-        <p>The multimodality is composed of five sensory data (LiDAR, RGB and depth camera, IMU and radar) collected in CARLA and channel multi-path information collected in Sionna. The general workflow is illustrated in the following figure:</p>
+        <p>The multimodality is composed of five sensory data (LiDAR, RGB and depth camera, IMU and radar) collected in CARLA and channel multi-path information collected in Sionna. The original workflow is illustrated in the following figure:</p>
         <img src="html_assets/pipeline_new.png" alt="Pipeline workflow">
         <p>Set up your environment and software following instructions in <a href="https://github.com/le-liang/Multimodal-Wireless/" target="_blank">https://github.com/le-liang/Multimodal-Wireless/</a>, you can begin the extension or replay process by following the detailed steps in our tutorial video.</p>
         
-        <p>Generally, the generation of dataset includes three steps:</p>
-        <ul>
-            <li><strong>CARLA</strong>: Define the scenario in CARLA via the config file and implement it via carla_main.py, which produces five sensor data and the yaml file of all frames simultaneously.</li>
-            <li><strong>Blender</strong>: Reconstruct the whole scenario frame by frame in Blender based on the .yaml file of each frame.</li>
-            <li><strong>Sionna</strong>: Load the scene of each frame and compute multi-path components and generate the corresponding channel.</li>
-        </ul>
-        
-        <p>➡️ <strong>Watch the Tutorial:</strong></p>
+        <section id="accelerated-pipeline" aria-labelledby="accelerated-pipeline-title" style="margin:2rem 0; padding:1.25rem; background:#f6faff; border-left:4px solid #297bfa; border-radius:8px; scroll-margin-top:6rem;">
+            <h2 id="accelerated-pipeline-title" style="margin-top:0; color:#315782; font-size:1.4rem;">🚀 v1.1.0: Accelerated Generation Pipeline</h2>
+            <p><strong>The pipeline changes only in stages 2 and 3.</strong> Stage 1 (CARLA sensor capture and per-frame pose recording) remains unchanged.</p>
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; color:#54647a; line-height:1.6; text-align:left;">
+                    <caption style="text-align:left; font-weight:600; color:#315782; padding-bottom:0.75rem;">🚀 Original pipeline vs. v1.1.0</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" style="padding:0.75rem; border-bottom:2px solid #d8e4f0;">Stage</th>
+                            <th scope="col" style="padding:0.75rem; border-bottom:2px solid #d8e4f0;">Original workflow</th>
+                            <th scope="col" style="padding:0.75rem; border-bottom:2px solid #d8e4f0;">v1.1.0 workflow</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">1. CARLA</th>
+                            <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Capture sensor data and record vehicle poses for every frame.</td>
+                            <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;"><strong>Unchanged.</strong> Capture the same sensor data and per-frame poses.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">2. Blender</th>
+                            <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Reconstruct and export a complete scene for every frame, storing a sequence of full scenes.</td>
+                            <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Generate and export <strong>only the initial scene</strong>. No separate full scenes are generated for subsequent frames, eliminating their intermediate storage requirement.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" style="padding:0.75rem; vertical-align:top;">3. Sionna RT</th>
+                            <td style="padding:0.75rem; vertical-align:top;">Load a complete scene for each frame, then compute its propagation paths and channel data.</td>
+                            <td style="padding:0.75rem; vertical-align:top;"><strong>Load the initial scene once for the first frame.</strong> For each subsequent frame, move and orient the vehicles within the existing scene using the recorded poses, then compute that frame's paths and channel data. This removes repeated scene-loading time.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Together with code-level optimizations, these changes deliver 20&times; faster total generation (approximately 95% less time for the same workload) while preserving the generated results.</strong> Generating only the initial scene also removes the large storage overhead of keeping full scenes for every frame.</p>
+        </section>
+
+        <p>➡️ <strong>Watch the Original Workflow Tutorial:</strong></p>
         
         <div class="video-container">
             <div class="video-label">YouTube</div>
