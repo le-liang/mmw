@@ -64,17 +64,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row" style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">1. CARLA</th>
+                            <th scope="row" style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">CARLA</th>
                             <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Capture sensor data and record vehicle poses for every frame.</td>
                             <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;"><strong>Unchanged.</strong> Capture the same sensor data and per-frame poses.</td>
                         </tr>
                         <tr>
-                            <th scope="row" style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">2. Blender</th>
+                            <th scope="row" style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Blender</th>
                             <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Reconstruct and export a complete scene for every frame, storing a sequence of full scenes.</td>
                             <td style="padding:0.75rem; border-bottom:1px solid #d8e4f0; vertical-align:top;">Generate and export <strong>only the initial scene</strong>. No separate full scenes are generated for subsequent frames, eliminating their intermediate storage requirement.</td>
                         </tr>
                         <tr>
-                            <th scope="row" style="padding:0.75rem; vertical-align:top;">3. Sionna RT</th>
+                            <th scope="row" style="padding:0.75rem; vertical-align:top;">Sionna</th>
                             <td style="padding:0.75rem; vertical-align:top;">Load a complete scene for each frame, then compute its propagation paths and channel data.</td>
                             <td style="padding:0.75rem; vertical-align:top;"><strong>Load the initial scene once for the first frame.</strong> For each subsequent frame, move and orient the vehicles within the existing scene using the recorded poses, then compute that frame's paths and channel data. This removes repeated scene-loading time.</td>
                         </tr>
@@ -89,14 +89,14 @@
         <div class="video-container">
             <div class="video-label">YouTube</div>
             <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/M0qTrLj61aM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://youtu.be/uqUeBgW2ls8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         
         <div class="video-container">
             <div class="video-label">Bilibili</div>
             <div class="video-wrapper">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1r11nBGEaV&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+                <iframe src="https://www.bilibili.com/video/BV1r11nBGEaV/?vd_source=96080c7f8528346ec45df46d67c8d3e1" allowfullscreen></iframe>
             </div>
         </div>
     </div>
