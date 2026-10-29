@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimodal-Wireless Dataset</title>
+    <link rel="preload" as="image" href="html_assets/hero-poster.webp" fetchpriority="high">
     <style>
         /* --- 全局样式 --- */
         body {
@@ -254,8 +255,8 @@
             left: 50%;
             min-width: 100%;
             min-height: 100%;
-            width: auto;
-            height: auto;
+            width: 2160px;
+            height: 1080px;
             transform: translate(-50%, -50%);
             object-fit: cover;
             filter: brightness(65%);
@@ -481,7 +482,7 @@
         </div>
     </header>
     <section class="hero">
-        <video id="heroVideo" autoplay muted loop playsinline></video>
+        <video id="heroVideo" src="202510301340.mp4" poster="html_assets/hero-poster.webp" preload="auto" autoplay muted loop playsinline></video>
         <div class="hero-overlay">
             <h1 class="hero-title">Multimodal-Wireless</h1>
             <p class="hero-subtitle">A Large-Scale Open-Source Dataset for Multimodal Sensing and Communication Research</p>
@@ -506,10 +507,10 @@
             <!-- 修改：删除了导致巨大间隙的空div -->
             <!-- 修改：将视频容器修改为2*2网格布局 -->
             <div style="flex: 1; display: flex; flex-wrap: wrap; gap: 19px; justify-content: center; align-items: center; max-width: 550px; min-width: 300px;">
-                <video src="Videos/Town10/Hroad.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
-                <video src="Videos/Town10/skybridge.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
-                <video src="Videos/Town05/beneath.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
-                <video src="Videos/Town03/5wayroad.mp4" autoplay loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);"></video>
+                <video data-src="Videos/Town10/Hroad.mp4" data-poster="Videos/Town10/Hroad.webp" loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);" preload="none"></video>
+                <video data-src="Videos/Town10/skybridge.mp4" data-poster="Videos/Town10/skybridge.webp" loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);" preload="none"></video>
+                <video data-src="Videos/Town05/beneath.mp4" data-poster="Videos/Town05/beneath.webp" loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);" preload="none"></video>
+                <video data-src="Videos/Town03/5wayroad.mp4" data-poster="Videos/Town03/5wayroad.webp" loop muted playsinline style="width: 48%; height: auto; aspect-ratio: 4/3; border-radius: 11px; box-shadow: 0 4px 12px rgba(30, 44, 70, 0.08);" preload="none"></video>
             </div>
         </div>
     </section>
@@ -528,35 +529,35 @@
         <h2 class="multimodal-title">Multimodal Data Involved</h2>
         <div class="multimodal-grid">
             <div class="modality-item">
-                <img src="html_assets/channel.png" alt="Channel" class="modality-img">
+                <img data-src="html_assets/channel.webp" alt="Channel" class="modality-img" width="976" height="666" decoding="async" loading="lazy">
                 <div class="modality-label">Channel</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/LiDAR.png" alt="LiDAR" class="modality-img">
+                <img data-src="html_assets/LiDAR.webp" alt="LiDAR" class="modality-img" width="1442" height="1136" decoding="async" loading="lazy">
                 <div class="modality-label">LiDAR</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/depthcamera.png" alt="Depth Map" class="modality-img">
+                <img data-src="html_assets/depthcamera.webp" alt="Depth Map" class="modality-img" width="640" height="480" decoding="async" loading="lazy">
                 <div class="modality-label">Depth Map</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/gps.png" alt="GNSS" class="modality-img">
+                <img data-src="html_assets/gps.webp" alt="GNSS" class="modality-img" width="8545" height="5928" decoding="async" loading="lazy">
                 <div class="modality-label">GNSS</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/camera.png" alt="RGB" class="modality-img">
+                <img data-src="html_assets/camera.webp" alt="RGB" class="modality-img" width="640" height="480" decoding="async" loading="lazy">
                 <div class="modality-label">RGB</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/radar.png" alt="Radar" class="modality-img">
+                <img data-src="html_assets/radar.webp" alt="Radar" class="modality-img" width="2650" height="2131" decoding="async" loading="lazy">
                 <div class="modality-label">Radar</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/boundingbox.png" alt="Bounding Box" class="modality-img">
+                <img data-src="html_assets/boundingbox.webp" alt="Bounding Box" class="modality-img" width="2664" height="1724" decoding="async" loading="lazy">
                 <div class="modality-label">Bounding Box</div>
             </div>
             <div class="modality-item">
-                <img src="html_assets/imu.png" alt="IMU" class="modality-img">
+                <img data-src="html_assets/imu.webp" alt="IMU" class="modality-img" width="2069" height="1142" decoding="async" loading="lazy">
                 <div class="modality-label">IMU</div>
             </div>
 
@@ -586,15 +587,8 @@ year = {2026}
             <p>&copy; 2025 LLGroup. Email: lliang@seu.du.cn </p>
         </footer>
     </div>
-    <script>
-        (function() {
-            const video = document.getElementById('heroVideo');
-            // 默认背景视频（请将 202510301340.mp4 放到与本文件相同目录）
-            const defaultSrc = '202510301340.mp4';
-            video.src = defaultSrc;
-            video.play().catch(() => {});
-        })();
-    </script>
+
     
+    <script src="html_assets/media-loader.js" defer></script>
 </body>
 </html>
